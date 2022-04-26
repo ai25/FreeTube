@@ -30,6 +30,7 @@
           @ended="handleVideoEnded"
           @error="handleVideoError"
           @store-caption-list="captionHybridList = $event"
+          @timeupdate="updateCurrentChapter"
         />
         <div
           v-if="!isLoading && isUpcoming"
@@ -94,6 +95,14 @@
         class="watchVideo"
         :class="{ theatreWatchVideo: useTheatreMode }"
         @pause-player="pausePlayer"
+      />
+      <watch-video-chapters
+        v-if="!hideChapters && !isLoading && videoChapters.length > 0"
+        :chapters="videoChapters"
+        :current-chapter-index="videoCurrentChapterIndex"
+        class="watchVideo"
+        :class="{ theatreWatchVideo: useTheatreMode }"
+        @timestamp-event="changeTimestamp"
       />
       <watch-video-description
         v-if="!isLoading"

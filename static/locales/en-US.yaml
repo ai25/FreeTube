@@ -288,6 +288,7 @@ Settings:
     Hide Playlists: Hide Playlists
     Hide Live Chat: Hide Live Chat
     Hide Active Subscriptions: Hide Active Subscriptions
+    Hide Chapters: Hide Chapters
   Data Settings:
     Data Settings: Data Settings
     Select Import Type: Select Import Type
@@ -650,6 +651,8 @@ Share:
   YouTube Embed URL copied to clipboard: YouTube Embed URL copied to clipboard
   YouTube Channel URL copied to clipboard: YouTube Channel URL copied to clipboard
 
+Chapters: Chapters
+
 Mini Player: Mini Player
 Comments:
   Comments: Comments
@@ -726,6 +729,8 @@ Tooltips:
     Fetch Feeds from RSS: When enabled, FreeTube will use RSS instead of its default
       method for grabbing your subscription feed. RSS is faster and prevents IP blocking,
       but doesn't provide certain information like video duration or live status
+  Distraction Free Settings:
+    Hide Chapters: Chapters are always hidden when the preferred API backend is set to Invidious API, as the Invidious API does not provide chapter information.
   Privacy Settings:
     Remove Video Meta Files: When enabled, FreeTube automatically deletes meta files created during video playback,
       when the watch page is closed.
