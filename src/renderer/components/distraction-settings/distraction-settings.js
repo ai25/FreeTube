@@ -46,9 +46,6 @@ export default Vue.extend({
     hideActiveSubscriptions: function () {
       return this.$store.getters.getHideActiveSubscriptions
     },
-    backendPreference: function () {
-      return this.$store.getters.getBackendPreference
-    },
     hideChapters: function () {
       return this.$store.getters.getHideChapters
     }

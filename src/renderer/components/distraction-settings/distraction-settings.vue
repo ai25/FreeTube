@@ -41,9 +41,7 @@
         <ft-toggle-switch
           :label="$t('Settings.Distraction Free Settings.Hide Chapters')"
           :compact="true"
-          :disabled="backendPreference === 'invidious'"
-          :default-value="backendPreference === 'invidious' ? true : hideChapters"
-          :tooltip="$t('Tooltips.Distraction Free Settings.Hide Chapters')"
+          :default-value="hideChapters"
           @change="updateHideChapters"
         />
       </div>
