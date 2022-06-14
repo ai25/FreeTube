@@ -343,14 +343,14 @@ export default Vue.extend({
             }
           }
 
-          this.videoChapters = []
+          const chapters = []
           if (!this.hideChapters) {
             const rawChapters = result.response.playerOverlays.playerOverlayRenderer.decoratedPlayerBarRenderer?.decoratedPlayerBarRenderer.playerBar?.multiMarkersPlayerBarRenderer.markersMap.find(m => m.key === 'DESCRIPTION_CHAPTERS')?.value.chapters
             if (rawChapters) {
               for (const { chapterRenderer } of rawChapters) {
                 const start = chapterRenderer.timeRangeStartMillis / 1000
 
-                this.videoChapters.push({
+                chapters.push({
                   title: chapterRenderer.title.simpleText,
                   timestamp: this.formatSecondsAsTimestamp(start),
                   startSeconds: start,
@@ -359,12 +359,20 @@ export default Vue.extend({
                 })
               }
 
-              for (let i = 0; i < this.videoChapters.length - 1; i++) {
-                this.videoChapters[i].endSeconds = this.videoChapters[i + 1].startSeconds
+              for (let i = 0; i < chapters.length - 1; i++) {
+                chapters[i].endSeconds = chapters[i + 1].startSeconds
               }
-              this.videoChapters.at(-1).endSeconds = parseInt(result.videoDetails.lengthSeconds)
+              chapters.at(-1).endSeconds = parseInt(result.videoDetails.lengthSeconds)
+
+              // prevent vue from adding reactivity which isn't needed
+              // as the chapter objects are read-only after this anyway
+              // the chapters are checked for every timeupdate event that the player emits
+              // this should lessen the performance and memory impact of the chapters
+              chapters.forEach(Object.freeze)
             }
           }
+          // only set this at the end so that there is only a single update to the view
+          this.videoChapters = chapters
 
           if ((this.isLive && this.isLiveContent) && !this.isUpcoming) {
             this.enableLegacyFormat()
@@ -638,7 +646,7 @@ export default Vue.extend({
               break
           }
 
-          this.videoChapters = []
+          const chapters = []
           if (!this.hideChapters) {
             // HH:MM:SS Text
             // MM:SS Text
@@ -653,7 +661,7 @@ export default Vue.extend({
                 start += 3600 * Number(groups.hours)
               }
 
-              this.videoChapters.push({
+              chapters.push({
                 title: groups.title.trim(),
                 timestamp: groups.timestamp,
                 startSeconds: start,
@@ -661,13 +669,20 @@ export default Vue.extend({
               })
             }
 
-            if (this.videoChapters.length > 0) {
-              for (let i = 0; i < this.videoChapters.length - 1; i++) {
-                this.videoChapters[i].endSeconds = this.videoChapters[i + 1].startSeconds
+            if (chapters.length > 0) {
+              for (let i = 0; i < chapters.length - 1; i++) {
+                chapters[i].endSeconds = chapters[i + 1].startSeconds
               }
-              this.videoChapters.at(-1).endSeconds = result.lengthSeconds
+              chapters.at(-1).endSeconds = result.lengthSeconds
+
+              // prevent vue from adding reactivity which isn't needed
+              // as the chapter objects are read-only after this anyway
+              // the chapters are checked for every timeupdate event that the player emits
+              // this should lessen the performance and memory impact of the chapters
+              chapters.forEach(Object.freeze)
             }
           }
+          this.videoChapters = chapters
 
           if (this.isLive) {
             this.showLegacyPlayer = true
@@ -782,18 +797,16 @@ export default Vue.extend({
 
     updateCurrentChapter: function () {
       const chapters = this.videoChapters
-      if (chapters.length > 0) {
-        const currentSeconds = this.getTimestamp()
-        const currentChapterStart = chapters[this.videoCurrentChapterIndex].startSeconds
+      const currentSeconds = this.getTimestamp()
+      const currentChapterStart = chapters[this.videoCurrentChapterIndex].startSeconds
 
-        if (currentSeconds !== currentChapterStart) {
-          let i = currentSeconds < currentChapterStart ? 0 : this.videoCurrentChapterIndex
+      if (currentSeconds !== currentChapterStart) {
+        let i = currentSeconds < currentChapterStart ? 0 : this.videoCurrentChapterIndex
 
-          for (; i < chapters.length; i++) {
-            if (currentSeconds < chapters[i].endSeconds) {
-              this.videoCurrentChapterIndex = i
-              break
-            }
+        for (; i < chapters.length; i++) {
+          if (currentSeconds < chapters[i].endSeconds) {
+            this.videoCurrentChapterIndex = i
+            break
           }
         }
       }
