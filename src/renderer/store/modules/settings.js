@@ -337,7 +337,7 @@ const stateWithSideEffects = {
   defaultVolume: {
     defaultValue: 1,
     sideEffectsHandler: (_, value) => {
-      sessionStorage.setItem('volume', value)
+      localStorage.setItem('volume', value)
     }
   },
 

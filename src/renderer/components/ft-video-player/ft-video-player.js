@@ -299,7 +299,7 @@ export default Vue.extend({
   mounted: function () {
     this.id = this._uid
 
-    const volume = sessionStorage.getItem('volume')
+    const volume = localStorage.getItem('volume')
 
     if (volume !== null) {
       this.volume = volume
@@ -655,7 +655,7 @@ export default Vue.extend({
       // 0 means muted
       // https://docs.videojs.com/html5#volume
       const volume = this.player.muted() ? 0 : this.player.volume()
-      sessionStorage.setItem('volume', volume)
+      localStorage.setItem('volume', volume)
     },
 
     mouseScrollVolume: function (event) {
