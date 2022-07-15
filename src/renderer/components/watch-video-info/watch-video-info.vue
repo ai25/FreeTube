@@ -13,19 +13,29 @@
           class="profileRow"
         >
           <div>
-            <img
-              :src="channelThumbnail"
-              class="channelThumbnail"
-              @click="goToChannel"
+            <router-link
+             class="channelName"
+             :to="`/channel/${channelId}`" 
             >
+              <img
+                :src="channelThumbnail"
+                class="channelThumbnail"
+                @click="goToChannel"
+               >
+            </router-link>
           </div>
           <div>
-            <div
-              class="channelName"
-              @click="goToChannel"
-            >
-              {{ channelName }}
-            </div>
+            <router-link
+             style="text-decoration:none; color:#FFF;"
+             :to="`/channel/${channelId}`"
+             >
+              <div
+                class="channelName"
+                @click="goToChannel"
+              >
+                {{ channelName }}
+              </div>
+             </router-link>
             <ft-button
               v-if="!hideUnsubscribeButton"
               :label="subscribedText"
