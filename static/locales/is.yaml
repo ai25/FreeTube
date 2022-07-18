@@ -765,7 +765,8 @@ Tooltips:
       má setja sérsniðna slóð hér.
     External Player: Sé valinn utanaðkomandi spilari, birtist táknmynd á smámyndinni
       til að opna myndskeiðið (í spilunarlista ef stuðningur er við slíkt) í þessum
-      utanaðkomandi spilara.
+      utanaðkomandi spilara. Aðvörun, stillingar Invidious hafa ekki áhrif á utanaðkomandi
+      spilara.
     DefaultCustomArgumentsTemplate: "(Sjálfgefið: '$')"
 Local API Error (Click to copy): 'Villa í staðværu API-kerfisviðmóti (smella til að
   afrita)'
@@ -819,3 +820,12 @@ Age Restricted:
     Video: Myndskeið
   This $contentType is age restricted: Þetta $ er með aldurstakmörkunum
 New Window: Nýr gluggi
+Channels:
+  Search bar placeholder: Leita í rásum
+  Count: $ rás/rásir fundust.
+  Empty: Rásalistinn þinn er tómur.
+  Unsubscribed: $ hefur verið fjarlægð úr áskriftunum þínum
+  Unsubscribe Prompt: Ertu viss um að þú viljir hætta áskrift að "$"?
+  Channels: Rásir
+  Title: Rásalisti
+  Unsubscribe: Segja upp áskrift

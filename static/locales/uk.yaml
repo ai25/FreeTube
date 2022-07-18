@@ -794,6 +794,7 @@ Tooltips:
       тут можна призначити нетиповий шлях.
     External Player: Якщо обрано зовнішній програвач, з'явиться піктограма для відкриття
       відео (добірка, якщо підтримується) у зовнішньому програвачі, на мініатюрі.
+      Увага, налаштування Invidious не застосовуються до сторонніх програвачів.
     DefaultCustomArgumentsTemplate: "(Типово: '$')"
 Local API Error (Click to copy): 'Помилка локального API (натисніть, щоб скопіювати)'
 Invidious API Error (Click to copy): 'Помилка Invidious API (натисніть, щоб скопіювати)'
@@ -850,3 +851,12 @@ Age Restricted:
   Type:
     Video: Відео
     Channel: Канал
+Channels:
+  Count: 'Знайдено каналів: $.'
+  Empty: Ваш список каналів наразі порожній.
+  Unsubscribe Prompt: Ви впевнені, що хочете відписатися від «$»?
+  Channels: Канали
+  Title: Список каналів
+  Unsubscribe: Відписатися
+  Search bar placeholder: Пошук каналів
+  Unsubscribed: $ вилучено з ваших підписок
