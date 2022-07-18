@@ -758,7 +758,7 @@ export default Vue.extend({
       if (this.rememberHistory && !this.isUpcoming && !this.isLoading && !this.isLive) {
         const player = this.$refs.videoPlayer.player
 
-        if (player !== null && this.saveWatchedProgress && this.genre !=="Music") {
+        if (player !== null && this.saveWatchedProgress && this.genre !== 'Music') {
           const currentTime = this.getWatchedProgress()
           const payload = {
             videoId: this.videoId,
@@ -766,7 +766,7 @@ export default Vue.extend({
           }
           this.updateWatchProgress(payload)
         }
-        if(this.genre==="Music"){
+        if (this.genre === 'Music') {
           const payload = {
             videoId: this.videoId,
             watchProgress: 0

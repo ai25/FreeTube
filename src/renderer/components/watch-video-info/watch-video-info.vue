@@ -14,28 +14,28 @@
         >
           <div>
             <router-link
-             class="channelName"
-             :to="`/channel/${channelId}`" 
+              class="channelName"
+              :to="`/channel/${channelId}`"
             >
               <img
                 :src="channelThumbnail"
                 class="channelThumbnail"
                 @click="goToChannel"
-               >
+              >
             </router-link>
           </div>
           <div>
             <router-link
-             style="text-decoration:none; color:#FFF;"
-             :to="`/channel/${channelId}`"
-             >
+              style="text-decoration:none; color:#FFF;"
+              :to="`/channel/${channelId}`"
+            >
               <div
                 class="channelName"
                 @click="goToChannel"
               >
                 {{ channelName }}
               </div>
-             </router-link>
+            </router-link>
             <ft-button
               v-if="!hideUnsubscribeButton"
               :label="subscribedText"
