@@ -57,6 +57,9 @@ export default Vue.extend({
     },
     hideSharingActions: function() {
       return this.$store.getters.getHideSharingActions
+    },
+    hideChapters: function () {
+      return this.$store.getters.getHideChapters
     }
   },
   methods: {
@@ -84,7 +87,8 @@ export default Vue.extend({
       'updateHideVideoDescription',
       'updateHideComments',
       'updateHideLiveStreams',
-      'updateHideSharingActions'
+      'updateHideSharingActions',
+      'updateHideChapters'
     ])
   }
 })

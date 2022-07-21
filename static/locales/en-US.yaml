@@ -302,6 +302,7 @@ Settings:
     Hide Comments: Hide Comments
     Hide Live Streams: Hide Live Streams
     Hide Sharing Actions: Hide Sharing Actions
+    Hide Chapters: Hide Chapters
   Data Settings:
     Data Settings: Data Settings
     Select Import Type: Select Import Type
@@ -668,6 +669,8 @@ Share:
   YouTube URL copied to clipboard: YouTube URL copied to clipboard
   YouTube Embed URL copied to clipboard: YouTube Embed URL copied to clipboard
   YouTube Channel URL copied to clipboard: YouTube Channel URL copied to clipboard
+
+Chapters: Chapters
 
 Mini Player: Mini Player
 Comments:
