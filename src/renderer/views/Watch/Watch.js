@@ -83,7 +83,8 @@ export default Vue.extend({
       timestamp: null,
       playNextTimeout: null,
       playNextCountDownIntervalId: null,
-      pictureInPictureButtonInverval: null
+      pictureInPictureButtonInverval: null,
+      infoAreaSticky: true
     }
   },
   computed: {
@@ -134,6 +135,9 @@ export default Vue.extend({
     },
     playNextVideo: function () {
       return this.$store.getters.getPlayNextVideo
+    },
+    autoplayPlaylists: function () {
+      return this.$store.getters.getAutoplayPlaylists
     },
     hideRecommendedVideos: function () {
       return this.$store.getters.getHideRecommendedVideos
@@ -1029,7 +1033,7 @@ export default Vue.extend({
     },
 
     handleVideoEnded: function () {
-      if (!this.watchingPlaylist && !this.playNextVideo) {
+      if ((!this.watchingPlaylist || !this.autoplayPlaylists) && !this.playNextVideo) {
         return
       }
 
